@@ -25,13 +25,14 @@ export class Dimmers {
       native: {}
     })
     this.d.log.info(`Dimmer DIP config: ${dip_config}`);
+    let n = 0
     if ((dip_config & 1) != 0) {
-      await this.createDimmer(0)
-      await this.createDimmer(1)
+      await this.createDimmer(n++)
+      await this.createDimmer(n++)
     }
     if ((dip_config & 2) != 0) {
-      await this.createDimmer(2)
-      await this.createDimmer(3)
+      await this.createDimmer(n++)
+      await this.createDimmer(n++)
     }
   }
 

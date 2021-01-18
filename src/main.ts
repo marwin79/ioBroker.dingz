@@ -134,7 +134,7 @@ export class Dingz extends utils.Adapter {
     })
 
     this.doFetch("shade").then((res: ShadesState) => {
-      this.shades.setShadeStates(res, this.dip_config)
+      this.shades.setShadeStates(res)
     })
 
   }
@@ -254,12 +254,12 @@ export class Dingz extends utils.Adapter {
   public async doFetch(addr: string): Promise<any> {
     const url = this.config.url + API
 
-    this.log.info("Fetching " + url + addr)
+    this.log.silly("Fetching " + url + addr)
     try {
       const response = await fetch(url + addr, { method: "get" })
       if (response.status == 200) {
         const result = await response.json()
-        this.log.info("got " + JSON.stringify(result))
+        this.log.silly("got " + JSON.stringify(result))
         return result
 
       } else {

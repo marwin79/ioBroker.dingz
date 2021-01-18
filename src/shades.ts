@@ -24,11 +24,12 @@ export class Shades {
       },
       native: {}
     })
+    let n = 0
     if ((dip_config & 1) == 0) {
-      await this.createShade(0)
+      await this.createShade(n++)
     }
     if ((dip_config & 2) == 0) {
-      await this.createShade(1)
+      await this.createShade(n++)
     }
   }
 
@@ -59,19 +60,18 @@ export class Shades {
     })
   }
 
-  public async setShadeStates(n: ShadesState, dip_config: number): Promise<void> {
-    if ((dip_config & 1) == 0) {
-      await this.setShadeState(0, n["0"])
-    }
-    if ((dip_config & 2) == 0) {
-      await this.setShadeState(1, n["1"])
+  public async setShadeStates(n: ShadesState): Promise<void> {
+    this.d.log.silly("setShadeStates: Setting shade states for " + JSON.stringify(n))
+    for (let i in n) {
+      await this.setShadeState(Number(i), n[i])
     }
   }
 
   public async setShadeState(n: number, s: ShadeState): Promise<void> {
-    this.d.log.silly("Setting shade states for " + n + ", " + JSON.stringify(s))
+    this.d.log.silly("setShadeState: Setting shade states for " + n + ", " + JSON.stringify(s))
     await this.d.setStateAsync(`shades.${n}.blind`, s.current.blind, true)
     await this.d.setStateAsync(`shades.${n}.lamella`, s.current.lamella, true)
+    // TODO s.target.blind/lamella ?
     await this.d.setStateAsync(`shades.${n}.disabled`, s.disabled, true)
   }
 

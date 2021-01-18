@@ -21,7 +21,8 @@
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "lodash": "^4.17.15",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "tsc": "^1.20150623.0"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.2.0",

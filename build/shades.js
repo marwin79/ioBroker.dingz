@@ -34,11 +34,12 @@ class Shades {
                 },
                 native: {}
             });
+            let n = 0;
             if ((dip_config & 1) == 0) {
-                yield this.createShade(0);
+                yield this.createShade(n++);
             }
             if ((dip_config & 2) == 0) {
-                yield this.createShade(1);
+                yield this.createShade(n++);
             }
         });
     }
@@ -71,21 +72,20 @@ class Shades {
             });
         });
     }
-    setShadeStates(n, dip_config) {
+    setShadeStates(n) {
         return __awaiter(this, void 0, void 0, function* () {
-            if ((dip_config & 1) == 0) {
-                yield this.setShadeState(0, n["0"]);
-            }
-            if ((dip_config & 2) == 0) {
-                yield this.setShadeState(1, n["1"]);
+            this.d.log.silly("setShadeStates: Setting shade states for " + JSON.stringify(n));
+            for (let i in n) {
+                yield this.setShadeState(Number(i), n[i]);
             }
         });
     }
     setShadeState(n, s) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.d.log.silly("Setting shade states for " + n + ", " + JSON.stringify(s));
+            this.d.log.silly("setShadeState: Setting shade states for " + n + ", " + JSON.stringify(s));
             yield this.d.setStateAsync(`shades.${n}.blind`, s.current.blind, true);
             yield this.d.setStateAsync(`shades.${n}.lamella`, s.current.lamella, true);
+            // TODO s.target.blind/lamella ?
             yield this.d.setStateAsync(`shades.${n}.disabled`, s.disabled, true);
         });
     }

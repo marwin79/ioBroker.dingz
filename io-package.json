@@ -135,7 +135,6 @@
     "readme": "https://github.com/rgwch/ioBroker.dingz/blob/master/README.md",
     "loglevel": "info",
     "restartAdapters": [
-      "vis"
     ],
     "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
     "mode": "daemon",
@@ -166,9 +165,6 @@
     "dependencies": [
       {
         "js-controller": ">=1.4.2"
-      },
-      {
-        "vis": ">=1.2.0"
       }
     ]
   },

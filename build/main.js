@@ -110,7 +110,7 @@ class Dingz extends utils.Adapter {
             this.dimmers.setDimmerStates(res, this.dip_config);
         });
         this.doFetch("shade").then((res) => {
-            this.shades.setShadeStates(res, this.dip_config);
+            this.shades.setShadeStates(res);
         });
     }
     /**

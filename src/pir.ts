@@ -119,7 +119,7 @@ export class PIR {
                 clearInterval(this.timer)
                 this.timer = undefined
                 // this.d.setState("actions.pir.generic", false, true)
-                this.d.log.info("ended tracking motion")
+                this.d.log.silly("ended tracking motion")
               }
             })
           }, 1000)

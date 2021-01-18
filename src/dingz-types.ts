@@ -59,10 +59,7 @@ export type DimmerState = {
 }
 
 export type DimmersState = {
-  "0": DimmerState;
-  "1": DimmerState;
-  "2": DimmerState;
-  "3": DimmerState;
+  [key: string]: DimmerState
 }
 
 export type ShadeState = {
@@ -78,8 +75,7 @@ export type ShadeState = {
 }
 
 export type ShadesState = {
-  "0": ShadeState;
-  "1": ShadeState;
+  [key: string]: ShadeState
 }
 
 export type PirState = {

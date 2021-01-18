@@ -55,10 +55,30 @@ function load(settings, onChange) {
   $('#btn4_actions').hide()
   onChange(false);
 
-  $('#trackbtn1').change(button_change);
-  $('#trackbtn2').change(button_change);
-  $('#trackbtn3').change(button_change);
-  $('#trackbtn4').change(button_change);
+  $('#trackbtn1').change(function () {
+    console.log("trackbtn1 change");
+    button_tab();
+    var $actions = $('#btn1_actions')
+    $(this).checked ? $actions.show() : $actions.hide()
+  });
+  $('#trackbtn2').change(function () {
+    console.log("trackbtn2 change");
+    button_tab();
+    var $actions = $('#btn2_actions')
+    $(this).checked ? $actions.show() : $actions.hide()
+  });
+  $('#trackbtn3').change(function () {
+    console.log("trackbtn3 change");
+    button_tab();
+    var $actions = $('#btn3_actions')
+    $(this).checked ? $actions.show() : $actions.hide()
+  });
+  $('#trackbtn4').change(function () {
+    console.log("trackbtn4 change");
+    button_tab();
+    var $actions = $('#btn4_actions')
+    $(this).checked ? $actions.show() : $actions.hide()
+  });
 
   
   // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
@@ -87,29 +107,19 @@ function save(callback) {
   callback(obj);
 }
 
-function button_change() {
-  const elem = $(this);
-  const id = elem.prop('id');
-  const button_name = id.substring(id.length - 4);
-
-  // Show or hide button entry on buttons page
-  const actions = $('#' + button_name + '_actions');
-  if ( elem.prop('checked') ) {
-    actions.show();
-  } else {
-    actions.hide();
-  }
-
+function button_tab() {
   // decide if button tab is shown
+  console.log("button_tab: " + document.getElementById('trackbtn1').checked)
+
   var show_button = document.getElementById('trackbtn1').checked
-                 || document.getElementById('trackbtn2').checked
-                 || document.getElementById('trackbtn3').checked
-                 || document.getElementById('trackbtn4').checked;
+    || document.getElementById('trackbtn2').checked
+    || document.getElementById('trackbtn3').checked
+    || document.getElementById('trackbtn4').checked;
 
   if (show_button) {
-    $('#sw-btn').show();
+    $('#sw-btn').show()
   } else {
-    $('#sw-btn').hide();
+    $('#sw-btn').hide()
   }
 
 }
